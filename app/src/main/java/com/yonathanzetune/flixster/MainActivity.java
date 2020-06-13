@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
-                Log.d("JSONRES", json.toString());
+//                Log.d("JSONRES", json.toString());
                 JSONObject mJson = json.jsonObject;
                 try {
                     JSONArray results = mJson.getJSONArray("results");

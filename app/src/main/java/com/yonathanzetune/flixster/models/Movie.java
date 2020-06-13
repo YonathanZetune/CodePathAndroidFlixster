@@ -14,12 +14,14 @@ public class Movie {
     String backdropPath;
     String title;
     String overview;
+    int id;
 
     public Movie(JSONObject json) throws JSONException {
         posterPath = json.getString("backdrop_path");
         backdropPath = json.getString("poster_path");
         title = json.getString("title");
         overview = json.getString("overview");
+        id = json.getInt("id");
 
     }
 
@@ -46,5 +48,9 @@ public class Movie {
 
     public String getOverview() {
         return overview;
+    }
+
+    public int getId() {
+        return id;
     }
 }

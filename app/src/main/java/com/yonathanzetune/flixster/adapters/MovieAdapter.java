@@ -1,10 +1,12 @@
 package com.yonathanzetune.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.yonathanzetune.flixster.R;
+import com.yonathanzetune.flixster.VideoActivity;
 import com.yonathanzetune.flixster.models.Movie;
 
 import java.util.List;
@@ -30,6 +33,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     TextView titleTV;
     TextView overviewTV;
     ImageView posterImgV;
+    ImageView playButton;
 
     @NonNull
     @Override
@@ -57,11 +61,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             titleTV = itemView.findViewById(R.id.titleTV);
             overviewTV = itemView.findViewById(R.id.overviewTV);
             posterImgV = itemView.findViewById(R.id.posterId);
+            playButton = itemView.findViewById(R.id.playButton);
         }
 
-        public void bind(Movie mMovie) {
+        public void bind(final Movie mMovie) {
             titleTV.setText(mMovie.getTitle());
             overviewTV.setText(mMovie.getOverview());
+            playButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, VideoActivity.class);
+                    intent.putExtra(VideoActivity.VIDEO_ID, String.valueOf(mMovie.getId()));
+                    context.startActivity(intent);
+
+                }
+            });
+
             String imgURL;//
 
             if (context.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
