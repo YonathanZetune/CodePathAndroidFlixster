@@ -20,6 +20,8 @@ import com.yonathanzetune.flixster.models.Movie;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     Context context;
@@ -86,7 +88,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             } else {
                 imgURL = mMovie.getPosterPath();
             }
-            Glide.with(context).load(imgURL).into(posterImgV);
+            Glide.with(context).load(imgURL).transform(new RoundedCornersTransformation(50, 10))
+                    .into(posterImgV);
         }
     }
 }
