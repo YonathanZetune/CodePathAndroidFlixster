@@ -29,7 +29,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![](https://i.imgur.com/sS9aKQN.gif)
+![App Demo Link](screenshots/demoFlix.gif)
 
 ## Notes
 
